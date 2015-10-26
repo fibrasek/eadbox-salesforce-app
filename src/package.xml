@@ -4,9 +4,19 @@
         <members>CourseController</members>
         <members>CourseImporter</members>
         <members>EmailManager</members>
+        <members>LoginController</members>
         <members>PreCourse</members>
         <members>UserLoginHelper</members>
         <name>ApexClass</name>
+    </types>
+    <types>
+        <members>LoginPage</members>
+        <name>ApexPage</name>
+    </types>
+    <types>
+        <members>Course__c</members>
+        <members>Subscription__c</members>
+        <name>CustomObject</name>
     </types>
     <version>33.0</version>
 </Package>

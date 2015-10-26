@@ -1,6 +1,8 @@
 public class UserLoginHelper {
 	
 	private String url;
+	public String user{set;get;}
+	public String password{set;get;}
 	
 	public void setUrl(String url) {
 		this.url = url;
@@ -15,7 +17,7 @@ public class UserLoginHelper {
 	}
 	
 	
-	public boolean loginUser(String user, String password) {
+	public boolean loginUser() {
 		
 		boolean isLoginValid = false;
 		String reqUrl = url + ''; 
@@ -28,7 +30,7 @@ public class UserLoginHelper {
 		req.setHeader('Host', url);
 		req.setEndpoint(url + '/api/login');
 		req.setHeader('Connection','close');
-		req.setBody('{"email":"' + user + '","password":"' + password + '"}');
+		req.setBody('{"email":"' + this.user + '","password":"' + this.password + '"}');
 		
 		System.debug(req.getBody() + ' ' + req.toString());
 		Http http = new Http();
