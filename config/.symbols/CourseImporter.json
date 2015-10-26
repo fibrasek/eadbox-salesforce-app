@@ -1,0 +1,43 @@
+{
+    "constructors": [
+        {
+            "annotations": [],
+            "location": {
+                "column": 9,
+                "line": 2
+            },
+            "modifiers": [
+                "public"
+            ],
+            "name": "CourseImporter",
+            "parameters": [],
+            "references": [],
+            "type": null
+        }
+    ],
+    "externalReferences": [],
+    "id": "01p6100000515BkAAI",
+    "innerClasses": [],
+    "interfaces": [],
+    "key": "01p6100000515BkAAI",
+    "methods": [],
+    "name": "CourseImporter",
+    "namespace": null,
+    "parentClass": "",
+    "properties": [],
+    "tableDeclaration": {
+        "annotations": [],
+        "location": {
+            "column": 27,
+            "line": 1
+        },
+        "modifiers": [
+            "public",
+            "with sharing"
+        ],
+        "name": "CourseImporter",
+        "references": [],
+        "type": "CourseImporter"
+    },
+    "variables": []
+}
