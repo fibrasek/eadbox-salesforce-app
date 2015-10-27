@@ -1,6 +1,4 @@
-public with sharing class CourseController {
-	
-	/*
+/*
 CourseImporter ci = new CourseImporter('http://aluno.impactaonline.com.br');
 List<Course__c> lcc = new List<Course__c>();
 lcc = ci.getCourses();
@@ -14,6 +12,18 @@ for(Course__c c: lcc) {
 User[] auth_token = [SELECT Eadbox_Auth_Token__c FROM User WHERE Id = :UserInfo.getUserId()];
 System.debug('Token: ' + auth_token[0].Eadbox_Auth_Token__c);
 	
-	*/
+*/
 
+public with sharing class CourseController {
+	public List<Course__c> courses;
+	public final CourseImporter importer;
+	public CourseHelper helper;
+	
+	public CourseController() {
+		
+	}
+
+	public List<Course__c> getCourses(){
+		return new List<Course__c>();
+	}
 }
