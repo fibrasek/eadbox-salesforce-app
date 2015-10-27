@@ -1,29 +1,43 @@
-/*
-CourseImporter ci = new CourseImporter('http://aluno.impactaonline.com.br');
-List<Course__c> lcc = new List<Course__c>();
-lcc = ci.getCourses();
-
-for(Course__c c: lcc) {
-	System.debug('ID: ' + c.course_id__c);
-	System.debug('Titulo: ' + c.title__c);
-	System.debug('Descricao: ' + c.description__c);
-	System.debug('Carga Horaria: ' + c.workload__c);
-
-User[] auth_token = [SELECT Eadbox_Auth_Token__c FROM User WHERE Id = :UserInfo.getUserId()];
-System.debug('Token: ' + auth_token[0].Eadbox_Auth_Token__c);
-	
-*/
-
 public with sharing class CourseController {
+	
+	public CourseHelper courseHelper{get;set;}
+	public String url{get;set;}
 	public List<Course__c> courses;
+	public Course__c course;
 	public final CourseImporter importer;
-	public CourseHelper helper;
+	public String courseId;
 	
 	public CourseController() {
-		
+		if(url == null){
+			this.courseHelper = new CourseHelper('http://academia.eadbox.com');	
+		} else {
+			this.courseHelper = new CourseHelper(url);
+		}
 	}
 
 	public List<Course__c> getCourses(){
-		return new List<Course__c>();
+		return [SELECT Id,course_id__c,title__c,description__c,workload__c FROM Course__c];
 	}
+	
+	public PageReference reload(){
+		return ApexPages.currentPage();
+	}
+	
+	public PageReference details(){
+		String id = Apexpages.currentPage().getParameters().get('courseId');
+		PageReference detail = new PageReference('/apex/CourseDetails?courseId=' + id);
+		detail.setRedirect(true);
+		return detail;
+	}
+	
+	/*
+	public List<Course__c> getCoursesWithAuth(){
+		User[] auth_token = [SELECT Eadbox_Auth_Token__c FROM User WHERE Id = :UserInfo.getUserId()];
+		
+		if(auth_token[0].Eadbox_Auth_Token__c == null){
+			
+		} else{
+			return [SELECT Id,course_id__c,title__c,description__c,workload__c FROM Course__c];
+		}
+	}*/
 }

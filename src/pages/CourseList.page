@@ -1,0 +1,23 @@
+<apex:page controller="CourseController">
+    <apex:form >
+	    <apex:pageBlock title="Lista de cursos">
+		  
+		    	<apex:pageBlockButtons >
+		    		<apex:inputText label="URL da Plataforma" value="{!courseHelper.url}"/>
+		    		<apex:commandButton action="{!reload}" value="Atualizar"/>
+		    	</apex:pageBlockButtons>
+		        
+		        <apex:pageBlockTable value="{! courses }" var="c">
+		        	<apex:column >
+		        		<apex:commandLink action="{!details}" value="Ver">
+		        			<apex:param name="courseId" value="{! c.course_id__c }"/>
+		        		</apex:commandLink>
+		        	</apex:column>
+		        	<apex:column value="{! c.course_id__c }"/>
+		            <apex:column value="{! c.title__c }"/>
+		            <apex:column value="{! c.workload__c }"/>
+		        </apex:pageBlockTable>
+		
+	    </apex:pageBlock>
+    </apex:form>
+</apex:page>

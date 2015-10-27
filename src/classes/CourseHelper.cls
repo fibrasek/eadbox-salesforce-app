@@ -1,12 +1,11 @@
 public with sharing class CourseHelper {
 
 	//CONSTANTS
+	public String url{get;set;}
 	private static final String EMPTY_TITLE = 'Sem título';
 	private static final String EMPTY_DESCRIPTION = 'Sem descrição';
 	private static final String EMPTY_WORKLOAD = String.valueOf((Time.newInstance(0,0,0,0)).hour());
 	private static final String EMPTY_TIME_AVAILABLE = String.valueOf((Time.newInstance(0,0,0,0)).hour());
-	
-	private String url;
 	
 	public void setUrl(String url) {
 		this.url = url;

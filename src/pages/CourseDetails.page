@@ -1,0 +1,10 @@
+<apex:page controller="CourseDetailsController">
+	<apex:pageBlock title="Account Details">
+	    <apex:pageBlockSection >
+	        <apex:outputText id="course_id" value="{! course.course_id__c }"/>
+	        <apex:outputText id="title" value="{! course.title__c }"/>
+	        <apex:outputText id="description" value="{! course.description__c }"/>
+	        <apex:outputText id="workload" value="{! course.workload__c }"/>
+	    </apex:pageBlockSection>
+	</apex:pageBlock>
+</apex:page>

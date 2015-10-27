@@ -2,6 +2,7 @@
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
         <members>CourseController</members>
+        <members>CourseDetailsController</members>
         <members>CourseHelper</members>
         <members>CourseImporter</members>
         <members>EmailManager</members>
@@ -11,6 +12,9 @@
         <name>ApexClass</name>
     </types>
     <types>
+        <members>AppConfig</members>
+        <members>CourseDetails</members>
+        <members>CourseList</members>
         <members>LoginPage</members>
         <name>ApexPage</name>
     </types>
