@@ -1,10 +1,29 @@
 <apex:page controller="CourseDetailsController">
-	<apex:pageBlock title="Account Details">
-	    <apex:pageBlockSection >
-	        <apex:outputText id="course_id" value="{! course.course_id__c }"/>
-	        <apex:outputText id="title" value="{! course.title__c }"/>
-	        <apex:outputText id="description" value="{! course.description__c }"/>
-	        <apex:outputText id="workload" value="{! course.workload__c }"/>
-	    </apex:pageBlockSection>
-	</apex:pageBlock>
+ 	<apex:form rendered="{! isUserLoggedIn == false}">
+        <apex:pageBlock title="Autenticação" >
+            <apex:pageMessages />
+            <apex:pageBlockSection columns="1" >
+                <apex:inputText label="E-mail" value="{!loginhelper.user}"/>
+                <apex:inputSecret label="Password" value="{!loginhelper.password}"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton value="Login" action="{!login}"/>
+                <apex:commandButton value="Logout" action="{!logout}"/>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+    <apex:form >
+		<apex:pageBlock title="Detalhes do Curso" rendered="{! isUserLoggedIn == true}">
+			<apex:pageMessages />
+			<apex:pageBlockButtons location="bottom">
+	            <apex:commandButton value="Logout" action="{!logout}"/>
+	        </apex:pageBlockButtons>
+		    <apex:pageBlockSection >
+		        <apex:outputText id="course_id" value="{! course.course_id__c }"/>
+		        <apex:outputText id="title" value="{! course.title__c }"/>
+		        <apex:outputText id="description" value="{! course.description__c }"/>
+		        <apex:outputText id="workload" value="{! course.workload__c }"/>
+		    </apex:pageBlockSection>
+		</apex:pageBlock>
+	</apex:form>
 </apex:page>

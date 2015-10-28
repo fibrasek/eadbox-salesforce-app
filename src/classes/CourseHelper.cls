@@ -1,11 +1,11 @@
 public with sharing class CourseHelper {
-
+	
 	//CONSTANTS
 	public String url{get;set;}
 	private static final String EMPTY_TITLE = 'Sem título';
 	private static final String EMPTY_DESCRIPTION = 'Sem descrição';
-	private static final String EMPTY_WORKLOAD = String.valueOf((Time.newInstance(0,0,0,0)).hour());
-	private static final String EMPTY_TIME_AVAILABLE = String.valueOf((Time.newInstance(0,0,0,0)).hour());
+	private static final Integer EMPTY_WORKLOAD = Time.newInstance(0,0,0,0).hour();
+	private static final Integer EMPTY_TIME_AVAILABLE = Time.newInstance(0,0,0,0).hour();
 	
 	public void setUrl(String url) {
 		this.url = url;
@@ -76,7 +76,7 @@ public with sharing class CourseHelper {
         		}
         		
         		if(pre.workload != null) {
-        			c.workload__c = String.valueOf(DateTime.parse(pre.workload).hour());
+        			c.workload__c = DateTime.parse(pre.workload).hour();
         		} else {
         			c.workload__c = EMPTY_WORKLOAD;
         		}
@@ -97,4 +97,5 @@ public with sharing class CourseHelper {
         
         return results;
     }
+    
 }
