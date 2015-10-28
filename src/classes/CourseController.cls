@@ -1,5 +1,4 @@
 public with sharing class CourseController {
-	
 	public CourseHelper courseHelper{get;set;}
 	public String url{get;set;}
 	public List<Course__c> courses;
@@ -9,7 +8,7 @@ public with sharing class CourseController {
 	
 	public CourseController() {
 		if(url == null){
-			this.courseHelper = new CourseHelper('http://academia.eadbox.com');	
+			this.courseHelper = new CourseHelper('http://fibrasek.eadbox.com');	
 		} else {
 			this.courseHelper = new CourseHelper(url);
 		}
@@ -39,5 +38,6 @@ public with sharing class CourseController {
 		} else{
 			return [SELECT Id,course_id__c,title__c,description__c,workload__c FROM Course__c];
 		}
-	}*/
+	}
+	*/
 }

@@ -1,17 +1,16 @@
-public with sharing class LoginController {
+public abstract with sharing class LoginController {
 
-	public UserLoginHelper loginHelper{get;set;}
+	public UserLoginHelper loginHelper {get;set;}
 	
 	public LoginController() {
 		loginHelper = new UserLoginHelper('http://fibrasek.eadbox.com');
 	}
 	
-	public void login() {
-		loginHelper.loginUser();
-	}
+	public abstract PageReference login();
+	public abstract PageReference logout();
 	
-	public void logout() {
-		loginHelper.logoutUser();
+	public boolean isUserLoggedIn(){
+		return loginHelper.isUserLoggedIn();
 	}
 
 }

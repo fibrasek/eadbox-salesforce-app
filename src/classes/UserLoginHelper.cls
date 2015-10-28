@@ -12,8 +12,24 @@ public class UserLoginHelper {
 		this.setUrl(url);
 	}
 	
-	public void logoutUser() {
-		updateUserAuthToken(null);
+	public boolean isUserLoggedIn(){
+		
+		try{
+			User[] auth_token = [SELECT Eadbox_Auth_Token__c FROM User WHERE Id = :UserInfo.getUserId()];
+		
+			if(auth_token[0].Eadbox_Auth_Token__c != '' && auth_token[0].Eadbox_Auth_Token__c != null) {
+				return true;
+			} else {
+				return false;
+			}	
+		} catch(Exception e) {
+			System.debug('Erro na query ou update!');
+			return false;
+		}
+	}
+	
+	public boolean logoutUser() {
+		return updateUserAuthToken(null);
 	}
 	
 	
@@ -75,15 +91,17 @@ public class UserLoginHelper {
         return result;
     }
     
-    private void updateUserAuthToken(String token) {
+    private boolean updateUserAuthToken(String token) {
 		try{
 			User[] auth_token = [SELECT Eadbox_Auth_Token__c FROM User WHERE Id = :UserInfo.getUserId()];
 		
 			auth_token[0].Eadbox_Auth_Token__c = token;
 			
 			update auth_token;
+			return true;
 		} catch(Exception e) {
 			System.debug('Erro na query ou update!');
+			return false;
 		}
     }
 }
